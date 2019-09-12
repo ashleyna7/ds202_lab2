@@ -1,0 +1,8 @@
+---
+title: "Lab 2"
+author: "Ashley Anderson"
+date: "9/12/2019"
+output: html_document
+---
+
+
