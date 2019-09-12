@@ -5,4 +5,30 @@ date: "9/12/2019"
 output: html_document
 ---
 
+```{r, results="hide"}
+choco <- read.csv("https://raw.githubusercontent.com/lbchu/ds202_labs/master/choco.csv")
+head(choco)
+```
+
+####Question Set - Individual 1
+
+#####1.  
+The chocolate ratings are approximately noramlly distributed, possibly slightly left skewed. From the boxplot, there appears to be a few outliers, namely one greater, and four less than the rest of the data. 
+
+```{r}
+hist(choco$Rating)
+boxplot(choco$Rating)
+```
+
+#####2.  
+It does not appear that there is a relationship between the rating of a chocolate bar and the chocolate bar's cocoa percentage in the scatterplot below.
+```{r}
+plot(choco$Cocoa.Pct,choco$Rating)
+```
+
+#####3.  
+Company location is a factor variable. Character variables are categorical variables, while factor variables look like categorical variables but can also function like numeric because they have integers underneath the labels. 
+```{r}
+str(choco$Company.Location)
+```
 
