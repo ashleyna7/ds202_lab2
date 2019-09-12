@@ -1,0 +1,13 @@
+---
+title: "Lab 2 Question Set"
+author: "Hexiang Zhang & Ashley Anderson"
+date: "9/12/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#### Partner 1: Ashley Anderson
+#### Partner 2: Hexiang Zhang
