@@ -7,7 +7,63 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+choco <- read.csv("https://raw.githubusercontent.com/lbchu/ds202_labs/master/choco.csv")
 ```
 
 #### Partner 1: Ashley Anderson
 #### Partner 2: Hexiang Zhang
+
+1 \. Run the following code line by line to figure out what it's doing. Then next to each line of code, write a comment explaining its purpose and function, including the use of any specific arguments. Comments in R are proceeded by a `#`, so that R knows not to run anything after the hashtag. 
+
+
+```{r, eval=FALSE}
+recent_rating = choco[choco$Review.Date>2011,] #Creates data frame of all ratings after 2011. 
+
+unique(recent_rating$Company.Location) #Levels lists all countries present from the original data set, while unique lists all the unique country names in the recent_rating data set, deleteing duplicates. There are 61 levels, and 54 unqiue countries in recent_rating. 
+
+recent_rating$Company.Location = droplevels(recent_rating$Company.Location) #This drops all levels that are not in the recent_rating data set but were in the choco data set. Now there are 54 levels. 
+
+head(recent_rating) #This gives the first few rows of the data set. 
+
+cross_table = table(recent_rating$Review.Date,recent_rating$Company.Location)
+cross_table #This counts the number of ratings a country has in each year. 
+
+which(cross_table[1,]!=0 & cross_table[2,]!=0 & cross_table[3,]!=0 & cross_table[4,]!=0 & cross_table[5,]!=0) #This gives all the country names and index locations that never have a count of 0 between 2012-1016. 
+
+france_recent = subset(recent_rating,Company.Location =='France')
+uk_recent = subset(recent_rating,Company.Location =='U.K.')
+germany_recent = subset(recent_rating,Company.Location=='Germany') #These 3 lines of code filters the recent_rating data frame by the company location of France, UK, and Germany respectively.  
+
+par(mfrow=c(2,2))
+color1 = ifelse(france_recent$Rating >median(france_recent$Rating), 'blue', 'green')
+plot(france_recent$Cocoa.Pct ~ france_recent$Review.Date,ylim=c(50,90),col=color1,pch=18,cex=1.5,xlab="Review Date", ylab= "Cocoa Percentage", main= "France") 
+legend('bottomright',legend=c('High Rating', 'Low Rating'),col=c('blue','green'),pch=18)
+
+color2 = ifelse(uk_recent$Rating >median(uk_recent$Rating), 'purple', 'red')
+plot(uk_recent$Cocoa.Pct ~ uk_recent$Review.Date,ylim=c(50,90),col=color2,pch=18,cex=1.5, xlab="Review Date", ylab= "Cocoa Percentage", main= "UK")
+legend('bottomright',legend=c('High Rating', 'Low Rating'),col=c('purple','red'),pch=18)
+
+color3 = ifelse(germany_recent$Rating > median(germany_recent$Rating), 'orange', 'yellow')
+plot(germany_recent$Cocoa.Pct ~ germany_recent$Review.Date,ylim=c(50,90),col=color3,pch=18,cex=1.5,xlab="Review Date", ylab= "Cocoa Percentage", main= "Germany") 
+legend('bottomright',legend=c('High Rating', 'Low Rating'),col=c('orange','yellow'),pch=18)
+
+#These 3 chunks of code create 3 separate graphs in one 2x2 window. These graphs show the review years by cocoa percentage. If the rating is above the median, it is labeled as high rating. Otherwise, it is labeled at low rating. Each graph also has unqiue colors to further identify. 
+```
+
+2 \. Click Zoom on the Rstudio window (under Plots) to see the plot more clearly. How do you think the plot produced from the code above can be improved? Recommend at least one possible improvement.   
+
+Add trend lines by rating so there is two trend lines per graph. This would make it easier to compare the two ratings and see how they improve overtime by country. It is also difficult to compare countries because the median values differ. You can't compare across graphs, so using a 2x2 window is misleading a little bit. 
+
+
+3 \. How does the **number** of ratings (not the actual value of the rating) depend on the year? Use graphics to answer this question.  
+
+```{r}
+
+```
+
+
+4 \. How do ratings compare across different company locations? Focus on the three locations with the most ratings. Hint: the function `sort()` might come in handy here.
+
+5 \. Brainstorm and write down an interesting question that can be answer from the dataset. The question should not duplicate the questions above.
+
+6 \. Bonus points (optional): Answer the question from the dataset.
