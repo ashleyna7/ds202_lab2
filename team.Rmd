@@ -16,7 +16,7 @@ choco <- read.csv("https://raw.githubusercontent.com/lbchu/ds202_labs/master/cho
 1 \. Run the following code line by line to figure out what it's doing. Then next to each line of code, write a comment explaining its purpose and function, including the use of any specific arguments. Comments in R are proceeded by a `#`, so that R knows not to run anything after the hashtag. 
 
 
-```{r, eval=FALSE}
+```{r, results="hide"}
 recent_rating = choco[choco$Review.Date>2011,] #Creates data frame of all ratings after 2011. 
 
 unique(recent_rating$Company.Location) #Levels lists all countries present from the original data set, while unique lists all the unique country names in the recent_rating data set, deleteing duplicates. There are 61 levels, and 54 unqiue countries in recent_rating. 
@@ -58,11 +58,14 @@ Add trend lines by rating so there is two trend lines per graph. This would make
 3 \. How does the **number** of ratings (not the actual value of the rating) depend on the year? Use graphics to answer this question.  
 
 ```{r}
-
+hist(recent_rating$Review.Date, breaks=6, ylim=c(0,450))
 ```
+
+We can see that the total number of ratings decreases as time goes on. In the histogram, there are significantly more ratings in between 2012 and 2013 (~400) than 2016 to 2017 (~100).
 
 
 4 \. How do ratings compare across different company locations? Focus on the three locations with the most ratings. Hint: the function `sort()` might come in handy here.
+
 
 5 \. Brainstorm and write down an interesting question that can be answer from the dataset. The question should not duplicate the questions above.
 
