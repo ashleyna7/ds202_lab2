@@ -5,6 +5,11 @@ date: "9/12/2019"
 output: html_document
 ---
 
+Github Repo: https://github.com/ashleyna7/ds202_lab2
+Repo Name: ds202_lab2
+Owner username: ashleyna7
+
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 choco <- read.csv("https://raw.githubusercontent.com/lbchu/ds202_labs/master/choco.csv")
