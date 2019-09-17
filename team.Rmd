@@ -73,17 +73,29 @@ We can see that the total number of ratings decreases as time goes on. In the hi
 
 ```{r}
 
+sort(table(recent_rating$Company.Location), decreasing = TRUE)[1:3]
+us_recent = subset(recent_rating,Company.Location =='U.S.A.')
+canada_recent = subset(recent_rating, Company.Location =='Canada')
+france_recent = subset(recent_rating,Company.Location =='France')
+
+boxplot(us_recent$Rating, canada_recent$Rating, france_recent$Rating)
+
 ```
+
+The three locations with the most ratings are USA, Canada, and France. Overall, the median of ratings are similar between the 3 locations. They have similar first quartiles. Canada has the highest third quartile. The boxplots for USA and France are similar.   
 
 
 5 \. Brainstorm and write down an interesting question that can be answer from the dataset. The question should not duplicate the questions above.
 
 How does the cocoa percentage depend on the year of review? 
 
+
 6 \. Bonus points (optional): Answer the question from the dataset.
 
 ```{r}
+
 plot(recent_rating$Review.Date,recent_rating$Cocoa.Pct)
+
 ```
 
 It appears that the distribution of cocoa percentage decreases as time goes on. For example, the range of cocoa percentage in 2012 is between 55-100 while the range of cocoa percentage in 2017 is about 60-85. 
