@@ -66,7 +66,19 @@ We can see that the total number of ratings decreases as time goes on. In the hi
 
 4 \. How do ratings compare across different company locations? Focus on the three locations with the most ratings. Hint: the function `sort()` might come in handy here.
 
+```{r}
+
+```
+
 
 5 \. Brainstorm and write down an interesting question that can be answer from the dataset. The question should not duplicate the questions above.
 
+How does the cocoa percentage depend on the year of review? 
+
 6 \. Bonus points (optional): Answer the question from the dataset.
+
+```{r}
+plot(recent_rating$Review.Date,recent_rating$Cocoa.Pct)
+```
+
+It appears that the distribution of cocoa percentage decreases as time goes on. For example, the range of cocoa percentage in 2012 is between 55-100 while the range of cocoa percentage in 2017 is about 60-85. 
