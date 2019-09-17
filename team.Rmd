@@ -66,7 +66,30 @@ We can see that the total number of ratings decreases as time goes on. In the hi
 
 4 \. How do ratings compare across different company locations? Focus on the three locations with the most ratings. Hint: the function `sort()` might come in handy here.
 
+```{r}
+
+sort(table(recent_rating$Company.Location), decreasing = TRUE)[1:3]
+us_recent = subset(recent_rating,Company.Location =='U.S.A.')
+canada_recent = subset(recent_rating, Company.Location =='Canada')
+france_recent = subset(recent_rating,Company.Location =='France')
+
+boxplot(us_recent$Rating, canada_recent$Rating, france_recent$Rating)
+
+```
+The three locations with the most ratings are USA, Canada, and France. Overall, the median of ratings are similar between the 3 locations. They have similar first quartiles. Canada has the highest third quartile. The boxplots for USA and France are similar.   
+
 
 5 \. Brainstorm and write down an interesting question that can be answer from the dataset. The question should not duplicate the questions above.
 
+Which company has had the most ratings overall in recent years? 
+
 6 \. Bonus points (optional): Answer the question from the dataset.
+
+```{r}
+
+sort(table(recent_rating$Company), decreasing = TRUE)[1:3]
+
+
+```
+
+Soma A. has had the most reviews with 34 reviews in recent years. 
