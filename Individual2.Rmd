@@ -1,0 +1,44 @@
+---
+title: "Lab 2 Question Set"
+author: "Hexiang Zhang"
+date: "9/16/2019"
+output: html_document
+---
+
+```{r}
+
+choco <- read.csv("https://raw.githubusercontent.com/lbchu/ds202_labs/master/choco.csv")
+
+```
+
+### 1. How are ratings distributed? Don’t forget to mention outliers, if there are any.
+
+```{r}
+
+hist(choco$Rating, breaks = 20)
+
+boxplot(choco$Rating)
+
+```
+   
+These ratings look pretty normally distributed. From the boxplot, there are five outliers. Four outliers ranging between ratings of 0-1 and one outlier at rating 5.  
+
+### 2. Do ratings depend on the cacao percentage of a chocolate bar?
+
+```{r}
+
+plot(Cocoa.Pct ~ Rating, data = choco) + abline(lm(Cocoa.Pct~Rating, data=choco))
+
+```
+
+   There does not appear to be a corrolation between the cacao percentage of a chocolate bar. The scatterplot  
+
+### 3. What class is the variable representing company locations? How is this different from a ‘character’ variable? (You do not need to produce a graphic for this question.)
+
+```{r} 
+
+sapply(choco, class)
+
+```
+
+Company locations are factors. Factors store data into levels. Elements in factors take on a specific set of values. Factors can seem like character vectors, but factors are integers under the hood. 
